@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercise</title>
+</head>
+<body>
+<ul>
+	<li data-time="5:17">ECMA6 Video</li>
+	<li data-time="8:22">NODE Video</li>
+	<li data-time="3:34">NODE Video</li>
+	<li data-time="4:29">ECMA6 Video</li>
+</ul>
+</body>
+<script type="text/javascript">
+	(function(){
+		'use strict';
+		// const items = Array.from(document.querySelectorAll('li[data-time]'));
+
+		// console.log(items);
+		const items = Array.from(document.querySelectorAll('[data-time]'));
+		const filteredItems = items.filter(item=>item.textContent.indexOf('ECMA6') > -1);
+		console.log(filteredItems);
+
+		const listTimes = items.map(item=>item.dataset.time);
+		console.log(listTimes);
+
+		const listSeconds = items.map(item=>item.dataset.time.split(":")[1]);
+		console.log(listSeconds);
+
+		const totalTime = listTimes.reduce(function(item1,item2){
+			let totalMinutes = parseInt(item1.split(":")[0]);
+			let totalSeconds = parseInt(item1.split(":")[1]);
+			if(totalSeconds > 59 ){ 
+				totalMinutes += 1;
+				totalSeconds -= 60;
+			}
+			let Minutes = parseInt(item2.split(":")[0]);
+			let Seconds = parseInt(item2.split(":")[1]);
+			return (totalMinutes += Minutes).toString() + ":" + (totalSeconds += Seconds).toString();
+		});
+
+		console.log(totalTime);
+
+
+		// const results = items.filter(item=> item ==='ECMA6');
+		// console.log(results);
+
+		// const list = Array.from(document.querySelectorAll("li"));
+		// console.log(list);
+
+	}());
+</script>
+</html>
