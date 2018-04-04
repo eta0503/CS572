@@ -1,22 +1,9 @@
-// setTimeout(function(){ 
-// 	console.log("world");
-// },2000);
-
-// console.log("hello");
-
-// setTimeout(() => {console.log('timeout');},0);
-// setImmediate(() => {console.log('immediate');});
-// process.nextTick(()=> console.log('nexttick'));
-
 
 Array.prototype.even  = function(){
 	var evens=[];
 	for(let value of this)
 	{
-		if(value%2==0)
-		{
-			evens.push(value);
-		}
+		if(value%2==0) evens.push(value);
 	}
 	return evens;
 }
@@ -25,10 +12,8 @@ Array.prototype.odd  = function(){
 	var odds=[];
 	for(let value of this)
 	{
-		if(value%2==1)
-		{
-			odds.push(value);
-		}
+		if(value%2==1) odds.push(value);
+
 	}
 	return odds;
 }
@@ -53,20 +38,6 @@ function slow(callback){
 
 function exec(fn){
 
-
-
-	// this.done = function(fn1)
-	// {
-	// 	fn1();
-	// 	return this;
-	// }
-	// this.fail = function(fn2)
-	// {
-	// 	fn2();
-	// 	return this;
-	// }
-	// setTimeout(fn,2000, );
-
 	setImmediate(function() {
 		fn(function(a,b){
 			if(a)  this._fail(a);
@@ -86,9 +57,7 @@ function exec(fn){
 		return this;
 	}
 
-
-	return this;
-	
+	return this;	
 	
 };
 
