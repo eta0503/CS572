@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exercise</title>
+</head>
+<body>
+<ul>
+	<li data-time="5:17">ECMA6 Video</li>
+	<li data-time="8:22">NODE Video</li>
+	<li data-time="3:34">NODE Video</li>
+	<li data-time="4:29">ECMA6 Video</li>
+</ul>
+</body>
+<script type="text/javascript">
+	//exercise1
+	(function(){
+		'use strict';
+		// const items = Array.from(document.querySelectorAll('li[data-time]'));
+
+		// console.log(items);
+		const items = Array.from(document.querySelectorAll('[data-time]'));
+		const filteredItems = items.filter(item=>item.textContent.indexOf('ECMA6') > -1);
+		console.log(filteredItems);
+
+		const listTimes = items.map(item=>item.dataset.time);
+		console.log(listTimes);
+
+		const listSeconds = items.map(item=>item.dataset.time.split(":")[1]);
+		console.log(listSeconds);
+
+		const totalTime = listTimes.reduce(function(item1,item2){
+			let totalMinutes = parseInt(item1.split(":")[0]);
+			let totalSeconds = parseInt(item1.split(":")[1]);
+			if(totalSeconds > 59 ){ 
+				totalMinutes += 1;
+				totalSeconds -= 60;
+			}
+			let Minutes = parseInt(item2.split(":")[0]);
+			let Seconds = parseInt(item2.split(":")[1]);
+			return (totalMinutes += Minutes).toString() + ":" + (totalSeconds += Seconds).toString();
+		});
+
+		console.log(totalTime);
+	}());
+	//exercise2
+	(function(){
+
+		var library = [
+        {prof: 'Asaad Saad', course: 'WAP', courseID: 'CS452'},
+        {prof: 'Rakesh Shrestha', course: 'WAA', courseID: 'CS545'},
+        {prof: 'Steve Nolle', course: 'SWE', courseID: 'CS425'}];
+
+	    library.sort((obj1, obj2) => obj1.course>obj2.course);
+	    console.log(JSON.stringify(library));
+
+	}());
+
+	//exercise3
+
+	(function(){
+		const numbers = [3, 62, 234, 7, 23, 74, 23, 76, 92];
+	    const numbersGreaterThan70 = numbers.filter(num => num > 70);
+
+	    console.log(JSON.stringify(numbersGreaterThan70));
+	}());
+
+	//exercise5
+
+	(function(){
+		function Person(name) {
+	        this.name = name;
+	    }
+
+	    let TeacherA = new Person("Asaad"), TeacherB = new Person("Sulav");
+	    Person.prototype.teach = function (subject) {
+	        console.log(this.name + " is now teaching " + subject);
+	    }
+
+	    TeacherA.teach("MWA");
+	    TeacherB.teach("Android");
+	}());
+
+	//exercise6
+
+	(function(){
+	    String.prototype.filter = function (array) {
+	        newStr = this;
+	        array.forEach(word => newStr = newStr.replace(word, "***"));
+	        return newStr;
+	    };
+
+	    console.log("This house is nice!".filter(['house', 'nice']));
+	}());
+
+	//exercise7
+
+	(function(){
+		Array.prototype.bubbleSort = function () {
+        for (let i = 0; i < this.length - 1; i++) {
+            let swapped = false;
+            for (let j = i; j < this.length; j++) {
+                if (this[i] > this[j]) {
+                    [this[i], this[j]] = [this[j], this[i]];
+                    swapped = true;
+                }
+            }
+            if (!swapped) break;
+        }
+        return this;
+    };
+    console.log([6, 4, 0, 3, -2, 1].bubbleSort());
+	}());
+
+</script>
+</html>
