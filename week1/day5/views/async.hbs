@@ -1,0 +1,34 @@
+{{#if error}}
+<p style="color:red">{{error}}</p>
+{{else}}
+<h1>{{title}}</h1>
+<table class="table">
+	    <tbody>
+            <tr>
+                <td>id</td>
+                <td>Name</td>
+                <td>Username</td>
+                <td>Email</td>
+                <td>City</td>
+                <td>Zip code</td>
+                <td>Latitude</td>
+                <td>Longitude</td>
+                <td>Website</td>
+            </tr>
+            {{#users}}
+	        <tr>
+	                <td>{{id}}</td>
+	                <td>{{name}}</td>
+	                <td>{{username}}</td>
+                    <td>{{email}}</td>
+                    <td>{{address.city}}</td>
+                    <td>{{address.zipcode}}</td>
+                    <td>{{address.geo.lat}}</td>
+                    <td>{{address.geo.lng}}</td>
+                    <td>{{website}}</td>
+	        </tr>
+            {{/users}}
+	    </tbody>
+	</table>
+{{/if}}
+

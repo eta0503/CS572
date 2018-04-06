@@ -20,7 +20,6 @@ Array.prototype.odd  = function(){
 
 console.log([1,2,3,4,5,6,7,8].even());
 console.log([1,2,3,4,5,6,7,8].odd());
-
 // 1. Sometimes setTimeout will be slow because it will check the timer at least once before executing. Otherwise, setImmediate can be executed without timer of event loop when I/O event is already called.
 
 // 2. process.nextTick is not part of event loop and it runs before any additional I/O events or timers fire in subsequent ticks of the event loop. And SetImmediate is part of event loop which is embedded in check phase of event loop. It will be processed after I/O event's callback.
