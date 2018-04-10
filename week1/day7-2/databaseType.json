@@ -1,2 +1,15 @@
-{"address": 
-	{"building": "1007", "coord": [-73.856077, 40.848447], "street": "Morris Park Ave", "zipcode": "10462"}, "district": "Bronx", "cuisine": "Bakery", "grades": [{"date": {"$date": 1393804800000}, "grade": "A", "score": 2}, {"date": {"$date": 1378857600000}, "grade": "A", "score": 6}, {"date": {"$date": 1358985600000}, "grade": "A", "score": 10}, {"date": {"$date": 1322006400000}, "grade": "A", "score": 9}, {"date": {"$date": 1299715200000}, "grade": "B", "score": 14}], "name": "Morris Park Bake Shop", "restaurant_id": "30075445"}
+//books
+{
+	"ISBN":"1078",
+	"Author":"J.K. Rowling",
+	"Keyword":["Harry Potter 1","2"],
+	"Count":2,
+	"BorrowedStudent":[{},{}]
+}
+
+//students
+{
+	"Studentid":"986215",
+	"Borrowedbooks":[],
+	"returnbooks":[{"ISBN":"1078","returndate":"2018-04-10"},{"ISBN":"1079","returndate":"2018-04-10"}]
+}
