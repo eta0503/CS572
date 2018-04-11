@@ -24,7 +24,9 @@ db.restaurants.find({"name":{$regex:"ces$"}},{"name":1,restaurant_id:1,district:
 12. Write a MongoDB query to find the restaurant_id,name,district and cuisine for those restaurants which contains 'Reg' as three letters somewhere in its name.
 db.restaurants.find({name:{$regex:"^.*Reg.*"}},{"name":1,restaurant_id:1,district:1,cuisine:1,_id:0})
 13. Write a MongoDB query to find the restaurants which belongs to the district Bronx and prepared either American or Chinese dish.
+db.restaurants.find({district:"Bronx",$or:[{cuisine:"American "},{cuisine:"Chinese"}]});
 14. Write a MongoDB query to find the restaurant_id,name,district and cuisine for those restaurants which belongs to the district Staten Island or Queens or Bronx or Brooklyn.
+db.restaurants.find({district:{$in:["Bronx","Brooklyn","Queens","Staten Island"]}},{restaurant_id:1,name:1,district:1,cuisine:1,_id:0});
 15. Write a MongoDB query to find the restaurant_id,name,district and cuisine for those restaurants which are not belonging to the district Staten Island or Queens or Bronx or Brooklyn.
 16. Write a MongoDB query to find the restaurant_id,name,district and cuisine for those restaurants which achieved a score which is not more than 10.
 17. Write a MongoDB query to find the restaurant_id,name, address and geographical location for those restaurants where 2nd element of coord array contains a value which is more than 42 and up to 52.
