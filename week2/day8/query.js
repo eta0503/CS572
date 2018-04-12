@@ -28,8 +28,20 @@ db.restaurants.find({district:"Bronx",$or:[{cuisine:"American "},{cuisine:"Chine
 14. Write a MongoDB query to find the restaurant_id,name,district and cuisine for those restaurants which belongs to the district Staten Island or Queens or Bronx or Brooklyn.
 db.restaurants.find({district:{$in:["Bronx","Brooklyn","Queens","Staten Island"]}},{restaurant_id:1,name:1,district:1,cuisine:1,_id:0});
 15. Write a MongoDB query to find the restaurant_id,name,district and cuisine for those restaurants which are not belonging to the district Staten Island or Queens or Bronx or Brooklyn.
+db.restaurants.find({district:{$nin:["Staten Island","Bronx","Brooklyn"]}},{restaurant_id:1,name:1,district:1,cuisine:1,_id:0});
 16. Write a MongoDB query to find the restaurant_id,name,district and cuisine for those restaurants which achieved a score which is not more than 10.
-17. Write a MongoDB query to find the restaurant_id,name, address and geographical location for those restaurants where 2nd element of coord array contains a value which is more than 42 and up to 52.
-18. Write a MongoDB query to display 
-19. Write a MongoDB query to display 
-20. Write a MongoDB query to display 
+db.restaurants.find({"grades.score":{$lt:10,$exists:true}},{restaurant_id:1,name:1,district:1,cuisine:1,"grades.score":1,_id:0});
+17. Write a MongoDB query to find the restaurant_id, name, address and geographical location for those restaurants where 2nd element of coord array contains a value which is more than 42 and up to 52.
+ db.restaurants.find({"address.coord.1": {$gt: 42, $lt: 52}}, {restaurant_id: 1, name: 1, address: 1})
+18. Write a MongoDB query to arrange the name of the restaurants in ascending order along with all the columns.
+db.restaurants.find({}).sort({name: 1});
+19. Write a MongoDB query to arrange the name of the restaurants in descending order along with all the columns.
+db.restaurants.find({}).sort({name: -1});
+20. Write a MongoDB query to arrange the name of the cuisine in ascending order and for those same cuisine district should be in descending order.
+db.restaurants.find({}).sort({name: 1, district: -1});
+21. Write a MongoDB query to know whether all the addresses contains the street or not.
+db.restaurants.find({"address.street": {$exists: false}},{"address":1,_id:0});
+22. Write a MongoDB query which will select all documents in the restaurants collection where the coord field value is Double.
+db.restaurants.find({"address.coord": {$type: 'double'}});
+23. Write a MongoDB query to find the restaurant name, district, longitude and latitude and cuisine for those restaurants which contains 'Mad' as first three letters of its name.
+db.restaurants.find({name: {$regex: '^Mad'}}, {name: 1, district: 1, "address.coord": 1, cuisine: 1})
