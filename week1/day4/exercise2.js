@@ -1,17 +1,21 @@
-(function() {
-	function qwe(cb) {
-		return cb + 1;
-	}
+const Rx = require('rxjs/Rx');
+const os = require('os');
 
-	const result =  qwe(function() {
-		function asd(cb) {
-			return cb + 0;
-		}
-		const param = asd(function() {
-			return 2;
-		});
-		return param + 1;
-	});
+let checkSystemObservable = Rx.Observable.create(observer => {
+    observer.next('Checking your system...');
 
-	console.log(result);
-})
+    // console.log('Total mem:'+os.totalmem());
+    // console.log('Total cpu:'+os.cpus().toString());
+    if(os.totalmem() / 1000000000 < 8) {
+        observer.next('This app needs at least 2GB of RAM');
+        return;
+    }
+    if(os.cpus().length < 4) {
+        observer.next('Processor is not supported');
+        return;
+    }
+    observer.next('System is checked successfully.');
+});
+
+let subscription = checkSystemObservable.subscribe(value => console.log(value));
+subscription.unsubscribe();
