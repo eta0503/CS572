@@ -1,0 +1,32 @@
+1. Multiple choice questions
+10 - Express/Node (EventLoop: ['event emitter', 'buffer', 'files', 'streams', 'bufferVSstreams'], modules: ['commonjs', 'require steps']) 03-Nodejs2 - 28 slide.
+
+
+2. What is module system, common js, require module - steps?
+3. What is promise? call back hell
+4. Async & await
+5. scalability, create another child process
+6. express - > 4 short answer question
+
+2. Short answer
+Nodejs/Express
+ - CORS,
+ - Event Emitter,
+ - Buffer,
+ - Streams,
+ - Buffer vs Streams,
+ - files,
+ - Promise,
+ - Async/await,
+ - Cluster: scalability, child process, long operations,
+
+MongoDB:
+ - Mongo (Mostly from Tuesday, Wednesday lectures)
+ - Array operators (push,wind),
+ - Update with all variations (Update set, update with inserting new field, multiple: true),($set, $unset, multi true ...)
+ - Aggregation (match, project, group, sort, sum),
+ - Indexes.
+ --Cross origin, resource sharing
+
+ 3. Programming
+  - CRUD, express, json
