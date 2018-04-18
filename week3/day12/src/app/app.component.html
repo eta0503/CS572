@@ -1,3 +1,36 @@
 <counter-component [valueCounter]="componentCounterValue" (counterChange)="onCounterChange($event)"></counter-component>
 
 Component Counter Value: {{ componentCounterValue }}
+
+<!--   <div id="myTag">
+      <span slot="slot1"> This Goes in Slot 1 </span>
+      <span slot="slot2"> This Goes in Slot 2 </span>
+  </div>
+  <template id="myTagTemplate">
+      <div> The first slot:
+          <slot name="slot1">Default text1</slot>
+      </div>
+      <div> The second slot:
+          <slot name="slot2">Default text2</slot>
+      </div>
+  </template>
+
+<script> 
+      var shadowRoot = document.querySelector('#myTag').attachShadow({ mode: 'open' });
+      var template = document.querySelector('#myTagTemplate');
+      var clone = document.importNode(template.content, true); // create nodes
+      shadowRoot.appendChild(clone); 
+</script> -->
+
+    <p>Normal Node1</p>
+    <p id="hostElement">Light DOM</p>
+    <p>Normal Node2</p>
+    <script> 
+        var e = document.querySelector('#hostElement');
+
+        var shadowRoot = e.attachShadow({ mode: 'open' }); // v1
+        shadowRoot.innerHTML = `<style> 
+					 p { color: red; } 
+				        </style>
+				        <p>Shadow DOM!</p>` ;
+    </script>
