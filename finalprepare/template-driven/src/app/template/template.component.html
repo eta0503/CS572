@@ -1,0 +1,31 @@
+<form novalidate #f="ngForm" (ngSubmit)="onSubmit()">
+  <div>
+    <input type="text" name="name" [(ngModel)]="user.name" #name="ngModel">
+  </div>
+  <div>
+    <input type="email" name="email" [(ngModel)]="user.email" #email="ngModel" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+  </div>
+  <input type="password" name="password" [(ngModel)]="user.password" required minlength="4" #password="ngModel">
+  <div *ngIf="!password.valid">
+  	<p>Wrote password</p>
+  </div>
+  <div *ngIf="!email.valid">
+    <p>Invalid username!</p>
+  </div>
+  <div>
+    <input type="number" name="age" [(ngModel)]="user.age" #age11="ngModel" required>
+  </div>
+  <div *ngIf="!age11.valid">
+    <p>Age is empty!</p>
+  </div>
+  <div *ngFor="let item of genders">
+    <label>{{item}}
+      <input type="radio" name="gender"  [(ngModel)]="user.gender" [value]="item" checked="checked" required >
+    </label>
+  </div>
+
+  <input type="text" name="city" [(ngModel)]="user.city" #age="ngModel" required="">
+  <input type="submit" value="submit" [disabled]="!f.valid">
+</form>
+
+<div>{{userjson | json}}</div>

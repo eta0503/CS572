@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   componentCounterValue: number;
+  someText:string = "enhkh";
 
   constructor() {
   	this.componentCounterValue = 0;
@@ -14,5 +15,9 @@ export class AppComponent {
 
   onCounterChange(evt) {
   	this.componentCounterValue = evt;
+  }
+
+  change(){
+    this.componentCounterValue = 100;
   }
 }
